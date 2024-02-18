@@ -22,8 +22,7 @@ async function downloadRandomImage() {
   const buffer = await response.buffer();
   
   fs.writeFileSync(path.join(directory, imageName), buffer);
-  console.log(`Imagen ${imageName} descargada`);
+  console.log(`Image ${imageName} downloaded`);
 }
 
-// Exportar las funciones y imageName
 export { getImageUrlFull, downloadRandomImage };
