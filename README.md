@@ -2,6 +2,8 @@
 
 Generates a random URL for an image hosted on GitHub, downloads it and saves it in a local directory of your project. This could be useful, for example, for applications that need images dynamically for testing, demonstration or development purposes.
 
+**With 36 images available at the moment**
+
 ---
 
 # Warning
