@@ -11,17 +11,17 @@ Generates a random URL for an image hosted on GitHub, downloads it and saves it 
 
 # Warning
 
-image core requires the `.msj` file extension so in the `package.json` of your project it requires to put this
+image core requires the `.js` file extension so in the `package.json` of your project it requires to put this
 
 ```json
 {
-  "type": "module", // you have to add this
+  "type": "commonjs", // you have to add this
   "dependencies": {
-    "imagen-core": "^1.0.0"
+    "imagen-core": "^1.0.4"
   }
 }
 ```
-just add above the dependencies `"type": "module"` just that, just don't add the message that's in the //
+just add above the dependencies `"type": "commonjs"` just that, just don't add the message that's in the //
 
 # How to use it
 
@@ -38,23 +38,43 @@ Well, what this function does is to download a random image that is uploaded to 
 ## Example
 
 ```js
-// downloadImageExample.js
+const { getImageUrlFull } = require('imagen-core');
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
 
-// Import the function downloadRandomImage from index.mjs file
-import { downloadRandomImage } from 'imagen-core';
+/**
+ * Downloads a random anime image from a specified URL.
+ * It uses getImageUrlFull to get the full image URL,
+ * then downloads and saves the image to a specified directory.
+ */
+async function downloadRandomImage() {
+  // Call getImageUrlFull to get the full image URL and image name
+  const { imageUrlFull, imageName } = await getImageUrlFull();
+  const directory = './test'; // Directory where the image will be saved
 
-// Calling the downloadRandomImage function to download an image
-async function exampleDownloadRandomImage() {
+  // Create the directory if it doesn't exist
+  if (!fs.existsSync(directory)) {
+    fs.mkdirSync(directory);
+  }
+
   try {
-    await downloadRandomImage();
-    console.log('Image downloaded successfully.');
+    // Use Axios to download the image data as an array buffer
+    const response = await axios.get(imageUrlFull, { responseType: 'arraybuffer' });
+
+    // Write the image data to a file in the specified directory
+    fs.writeFileSync(path.join(directory, imageName), Buffer.from(response.data));
+    
+    // Log a success message
+    console.log(`image ${imageName} downloaded`);
   } catch (error) {
-    console.error('Error downloading the image:', error);
+    // Log an error message if the download fails
+    console.error(`Failed to download image ${imageName}: ${error.message}`);
   }
 }
 
-// Execute the example
-exampleDownloadRandomImage();
+// Run the downloadRandomImage function
+downloadRandomImage();
 ```
 
 # getImageUrlFull
@@ -64,24 +84,24 @@ What this function does is to send the direct link of the image this you can ser
 ## Example
 
 ```js
-// imageUrlExample.js
+const { getImageUrlFull } = require('imagen-core');
 
-// Import getImageUrlFull function from index.mjs file
-import { getImageUrlFull } from 'imagen-core';
-
-// Call the getImageUrlFull function to get the URL of the image
-async function exampleGetImageUrlFull() {
-  try {
-    const { imageUrlFull, imageName } = await getImageUrlFull();
-    console.log('Full Image URL:', imageUrlFull);
-    console.log('Image Name:', imageName);
-  } catch (error) {
-    console.error('Error getting the URL of the image:', error);
-  }
+/**
+ * Example function to demonstrate getting the full URL of an image.
+ * It uses the getImageUrlFull function to retrieve the URL and image name,
+ * and then logs them to the console.
+ */
+async function exampleGetFullImageUrl() {
+  // Call the getImageUrlFull function to get the URL and image name
+  const { imageUrlFull, imageName } = await getImageUrlFull();
+  
+  // Log the full image URL and image name to the console
+  console.log('Full image URL:', imageUrlFull);
+  console.log('Image name:', imageName);
 }
 
-// Execute example
-exampleGetImageUrlFull();
+// Run the example function
+exampleGetFullImageUrl();
 ```
 # downloadRandomAnimeImage
 
@@ -90,18 +110,22 @@ What this function does is to load a random anime image that is in our `reposito
 ## Example
 
 ```js
-import { downloadRandomAnimeImage } from 'imagen-core';
+const { downloadRandomAnimeImage } = require('imagen-core');
 
+/**
+ * Downloads a random anime image and logs a success message if successful.
+ * Logs an error message if there's an error during the download.
+ */
 async function testDownloadRandomAnimeImage() {
   try {
     await downloadRandomAnimeImage();
-    console.log('Random anime image downloaded successfully');
+    console.log('Anime image downloaded successfully');
   } catch (error) {
-    console.error('Error downloading random anime image:', error);
+    console.error('Error downloading anime image:', error);
   }
 }
 
-// Test downloadRandomAnimeImage
+// Run the function to test downloading a random anime image
 testDownloadRandomAnimeImage();
 ```
 
@@ -110,20 +134,24 @@ testDownloadRandomAnimeImage();
 This function displays the direct link to the generated `anime` image and can be used in `social networks` with `github support`.
 
 ```js
-import { getRandomAnimeImageUrl } from 'imagen-core';
+const { getRandomAnimeImageUrl } = require('imagen-core');
 
-async function testGetRandomAnimeImageUrl() {
-  try {
-    const { animeImageUrlFull, imageName } = await getRandomAnimeImageUrl();
-    console.log('Random anime image URL:', animeImageUrlFull);
-    console.log('Image name:', imageName);
-  } catch (error) {
-    console.error('Error fetching random anime image URL:', error);
-  }
+/**
+ * Example function to demonstrate getting a random anime image URL.
+ * It uses the getRandomAnimeImageUrl function to retrieve the URL and image name,
+ * and then logs them to the console.
+ */
+async function exampleGetRandomAnimeImageUrl() {
+  // Call the getRandomAnimeImageUrl function to get the URL and image name
+  const { animeImageUrlFull, imageName } = await getRandomAnimeImageUrl();
+  
+  // Log the full anime image URL and image name to the console
+  console.log('Full anime image URL:', animeImageUrlFull);
+  console.log('Image name:', imageName);
 }
 
-// Test getRandomAnimeImageUrl
-testGetRandomAnimeImageUrl();
+// Run the example function
+exampleGetRandomAnimeImageUrl();
 ```
 
 # Contributors
