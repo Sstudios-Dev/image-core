@@ -2,9 +2,12 @@
 
 Generates a random URL for an image hosted on GitHub, downloads it and saves it in a local directory of your project. This could be useful, for example, for applications that need images dynamically for testing, demonstration or development purposes.
 
-**With 36 images available at the moment**
-
 ---
+
+# Categories
+
+- Random images: **36** images
+- Anime images: **40** images
 
 # Warning
 
@@ -79,6 +82,48 @@ async function exampleGetImageUrlFull() {
 
 // Execute example
 exampleGetImageUrlFull();
+```
+# downloadRandomAnimeImage
+
+What this function does is to load a random anime image that is in our `repository`.
+
+## Example
+
+```js
+import { downloadRandomAnimeImage } from './src/anime.mjs';
+
+async function testDownloadRandomAnimeImage() {
+  try {
+    await downloadRandomAnimeImage();
+    console.log('Random anime image downloaded successfully');
+  } catch (error) {
+    console.error('Error downloading random anime image:', error);
+  }
+}
+
+// Test downloadRandomAnimeImage
+testDownloadRandomAnimeImage();
+```
+
+# GetRandomAnimeImageUrl
+
+This function displays the direct link to the generated `anime` image and can be used in `social networks` with `github support`.
+
+```js
+import { getRandomAnimeImageUrl } from './src/anime.mjs';
+
+async function testGetRandomAnimeImageUrl() {
+  try {
+    const { animeImageUrlFull, imageName } = await getRandomAnimeImageUrl();
+    console.log('Random anime image URL:', animeImageUrlFull);
+    console.log('Image name:', imageName);
+  } catch (error) {
+    console.error('Error fetching random anime image URL:', error);
+  }
+}
+
+// Test getRandomAnimeImageUrl
+testGetRandomAnimeImageUrl();
 ```
 
 # Contributors
