@@ -90,7 +90,7 @@ What this function does is to load a random anime image that is in our `reposito
 ## Example
 
 ```js
-import { downloadRandomAnimeImage } from './src/anime.mjs';
+import { downloadRandomAnimeImage } from 'imagen-core';
 
 async function testDownloadRandomAnimeImage() {
   try {
@@ -110,7 +110,7 @@ testDownloadRandomAnimeImage();
 This function displays the direct link to the generated `anime` image and can be used in `social networks` with `github support`.
 
 ```js
-import { getRandomAnimeImageUrl } from './src/anime.mjs';
+import { getRandomAnimeImageUrl } from 'imagen-core';
 
 async function testGetRandomAnimeImageUrl() {
   try {
