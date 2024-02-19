@@ -1,9 +1,9 @@
 {
-  "type": "module",
+  "type": "commonjs",
   "name": "imagen-core",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "generates a random URL for an image hosted on GitHub, downloads it and saves it in a local directory of your project. This could be useful, for example, for applications that need images dynamically for testing, demonstration or development purposes.",
-  "main": "src/index.mjs",
+  "main": "src/index.js",
   "scripts": {
     "start": "node test.js"
   },
@@ -16,7 +16,7 @@
     "url": "git+https://github.com/Sstudios-Dev/image-core.git"
   },
   "dependencies": {
-    "fs": "^0.0.1-security",
-    "node-fetch": "^3.3.2"
+    "axios": "^1.6.7",
+    "fs": "^0.0.1-security"
   }
 }
