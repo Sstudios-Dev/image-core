@@ -4,7 +4,7 @@ const path = require('path');
 
 async function getRandomAnimeImageUrl() {
   const animeImageUrl = 'https://raw.githubusercontent.com/Sstudios-Dev/image-core/main/src/img-anime/';
-  const randomNumber = Math.floor(Math.random() * 50) + 1; // Assuming there are 1000 images
+  const randomNumber = Math.floor(Math.random() * 120) + 1; // Assuming there are 1000 images
   const imageName = `img-anime${randomNumber}.jpg`;
   return { animeImageUrlFull: `${animeImageUrl}${imageName}?raw=true`, imageName };
 }
