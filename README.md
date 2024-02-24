@@ -207,6 +207,37 @@ async function downloadRandomNsfwImage() {
 downloadRandomNsfwImage();
 ```
 
+# getRandomNsfwImageUrl
+
+What this function does is to send the direct link of the image this you can server for a `whatsapp or discord` bot or for some social network that has `github support`.
+
+## Example
+
+```js
+const { getRandomNsfwImageUrl } = require('imagen-core');
+
+/**
+ * Example function to demonstrate getting a random NSFW image URL.
+ * It uses the getRandomNsfwImageUrl function to retrieve the URL and image name,
+ * and then logs them to the console.
+ */
+async function exampleGetRandomNsfwImageUrl() {
+  try {
+    // Call the getRandomNsfwImageUrl function to get the URL and image name
+    const { NsfwImageUrlFull, imageName } = await getRandomNsfwImageUrl();
+    
+    // Log the full NSFW image URL and image name to the console
+    console.log('Full NSFW image URL:', NsfwImageUrlFull);
+    console.log('Image name:', imageName);
+  } catch (error) {
+    console.error('Error getting the NSFW image:', error);
+  }
+}
+
+// Run the example function
+exampleGetRandomNsfwImageUrl();
+```
+
 # Contributors
 Thank you very much for helping in the project ❤
 
