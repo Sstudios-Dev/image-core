@@ -155,6 +155,58 @@ async function exampleGetRandomAnimeImageUrl() {
 exampleGetRandomAnimeImageUrl();
 ```
 
+---
+
+# warning ⚠
+
+This module contains content for people over `+18` SstudiosDev is not responsible for any damage it may cause to those `-18`
+
+# downloadRandomNsfwImage
+
+This function takes a random image from the image-core servers and returns a random image.
+
+## Example
+
+```js
+const { getRandomNsfwImageUrl } = require('imagen-core'); // Assuming 'imagen-core' is the correct path
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+
+/**
+ * Downloads a random NSFW image from a specified URL.
+ * It uses getRandomNsfwImageUrl to get the full image URL,
+ * then downloads and saves the image to a specified directory.
+ */
+async function downloadRandomNsfwImage() {
+  // Call getRandomNsfwImageUrl to get the full image URL and image name
+  const { NsfwImageUrlFull, imageName } = await getRandomNsfwImageUrl();
+  const directory = './test-nsfw'; // Directory where the image will be saved
+
+  // Create the directory if it doesn't exist
+  if (!fs.existsSync(directory)) {
+    fs.mkdirSync(directory);
+  }
+
+  try {
+    // Use Axios to download the image data as an array buffer
+    const response = await axios.get(NsfwImageUrlFull, { responseType: 'arraybuffer' });
+
+    // Write the image data to a file in the specified directory
+    fs.writeFileSync(path.join(directory, imageName), Buffer.from(response.data));
+    
+    // Log a success message
+    console.log(`Nsfw image ${imageName} downloaded`);
+  } catch (error) {
+    // Log an error message if the download fails
+    console.error(`Failed to download Nsfw image ${imageName}: ${error.message}`);
+  }
+}
+
+// Run the downloadRandomNsfwImage function
+downloadRandomNsfwImage();
+```
+
 # Contributors
 Thank you very much for helping in the project ❤
 
