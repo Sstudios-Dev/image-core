@@ -7,7 +7,7 @@ Generates a random URL for an image hosted on GitHub, downloads it and saves it 
 # Modules
 
 - Random images: **46** images
-- Anime images: **120** images
+- Anime images: **140** images
 - Nsfw images: **30** images **[Content +18 ⚠]**
 
 # Warning
