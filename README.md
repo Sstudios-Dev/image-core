@@ -18,7 +18,7 @@ image core requires the `.js` file extension so in the `package.json` of your pr
 {
   "type": "commonjs", // you have to add this
   "dependencies": {
-    "imagen-core": "^1.0.5"
+    "imagen-core": "^1.0.6"
   }
 }
 ```
