@@ -6,7 +6,7 @@ Generates a random URL for an image hosted on GitHub, downloads it and saves it 
 
 # Modules
 
-- Random images: **46** images
+- Random images: **60** images
 - Anime images: **200** images
 
 # Warning
@@ -17,7 +17,7 @@ image core requires the `.js` file extension so in the `package.json` of your pr
 {
   "type": "commonjs", // you have to add this
   "dependencies": {
-    "imagen-core": "^1.0.6"
+    "imagen-core": "^1.0.7"
   }
 }
 ```
