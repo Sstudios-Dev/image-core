@@ -4,7 +4,7 @@ const path = require('path');
 //Esta Funcion se usa para llamar la url de la imagen 
 async function getImageUrlFull() {
   const imageUrl = 'https://raw.githubusercontent.com/Sstudios-Dev/image-core/main/src/img/';
-  const randomNumber = Math.floor(Math.random() * 70) + 1; // Assuming there are 1000 images
+  const randomNumber = Math.floor(Math.random() * 76) + 1; // Assuming there are 1000 images
   const imageName = `img-core${randomNumber}.jpg`;
   return { imageUrlFull: `${imageUrl}${imageName}?raw=true`, imageName };
 }
